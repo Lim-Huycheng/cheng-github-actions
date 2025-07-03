@@ -6,7 +6,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mochi"
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
