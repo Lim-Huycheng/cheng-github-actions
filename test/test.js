@@ -1,7 +1,18 @@
-const assert = require('chai').assert;
-const app = require('../../app');
-describe('Simple test', function() {
- it('should return hello message', function() {
- assert.equal('Hello, GitHub Actions!', 'Hello, GitHub Actions!');
- });
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const app = require('../app');
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('GET /', () => {
+  it('should return Hello, GitHub Actions!', (done) => {
+    chai.request(app)
+      .get('/')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.text).to.equal('Hello, GitHub Actions!');
+        done();
+      });
+  });
 });
