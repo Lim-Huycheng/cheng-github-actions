@@ -1,24 +1,30 @@
 name: Node.js CI
+
 on:
- push:
- branches:
- - main # Trigger this workflow only for the main branch
- pull_request:
- branches:
- - main # Trigger this workflow for PRs targeting the main branch
+  push:
+    branches:
+      - main  # Trigger this workflow only for the main branch
+  pull_request:
+    branches:
+      - main  # Trigger this workflow for PRs targeting the main branch
+
 jobs:
- build:
- runs-on: ubuntu-latest
- steps:
- - name: Checkout code
- uses: actions/checkout@v3
- - name: Set up Node.js
- uses: actions/setup-node@v3
- with:
- node-version: '16' # Specify Node.js version
- - name: Install dependencies
- run: |
- npm install # or npm install
- - name: Run tests
- run: |
- npm test # or npm test
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Specify Node.js version
+
+      - name: Install dependencies
+        run: |
+          npm install  # or yarn install
+
+      - name: Run tests
+        run: |
+          npm test  # or yarn test
